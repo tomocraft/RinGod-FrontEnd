@@ -29,6 +29,8 @@ async function showBoard(bId, post) {
 
             document.getElementById("board").style.display = "none";
 
+            document.getElementById("posting").style.display = "none";
+
             document.getElementById("board-content").style.display = "flex";
 
             if (logined) document.getElementById("sendmsg").style.display = "flex";
