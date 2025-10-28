@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>RinGod</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="RinGod | 掲示板">
+    <meta name="keywords" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:site_name" content="RinGod">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RinGod">
+    <meta property="og:description" content="RinGod | 掲示板">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <!-- <meta property="og:image" content="https://memoful.vercel.app/favicon/icon-512.png"> -->
+    <meta property="og:locale" content="ja_JP">
+    <link rel="stylesheet" href="style.css?v=1.0.0">
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" sizes="32x32">
+    <link rel="icon" href="/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="background"></div>
+        <a href="/index.html"><img src="/favicon/icon-512.png" class="icon" alt="ringod"></a>
+        <p class="logo walter-turncoat-regular">Ringod</p>
+        <div class="logins" id="logins">
+            <button class="create-btn" id="create-btn">アカウントを作成</button>
+            <button class="login-btn" id="login-btn">ログイン</button>
+        </div>
+    </div>
+    <div class="sidemenu" id="sidemenu">
+        <div class="signups" id="signups">
+            <p>ログインして今すぐ参加しましょう</p>
+            <button class="login-btn" id="login-btn">ログイン</button>
+            <button class="create-btn" id="create-btn">アカウントを作成</button>
+        </div>
+        <a href="/index.html">掲示板</a>
+        <!-- <a href="setting.html">設定</a> -->
+        <a id="logout">ログアウト</a>
+        <div class="arrow" id="arrow">
+            <button class="arrow-btn" id="arrow-btn"></button>
+        </div>
+    </div>
+    <div class="board" id="board">
+    </div>
+    <div class="board messages" id="board-content">
+    </div>
+    <div class="posting" id="posting">
+        <div class="post-title-input">
+            <label>投稿タイトル：<br><input id="pti" class="pti" autocomplete="off" required></label>
+        </div>
+        <div class="post-message-input">
+            <label>投稿メッセージ：<br><textarea rows="7" cols="30" class="pmi" id="pmi"></textarea>
+            </label>
+        </div>
+        <div class="posting-btn">
+            <button class="posting-btn" id="posting-btn">
+                投稿する
+            </button>
+        </div>
+    </div>
+    <div class="sendmsg" id="sendmsg">
+        <textarea rows="1" cols="30" class="sendmsg" id="sendmsg-ta"></textarea>
+        <button class="sendmsg-btn" id="sendmsg-btn"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+    <div class="post-btn" id="post-btn">
+        <button class="post" id="post">+</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

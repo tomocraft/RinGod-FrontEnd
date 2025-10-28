@@ -1,0 +1,639 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: column;
+}
+
+.ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.walter-turncoat-regular {
+    font-family: "Walter Turncoat", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max(10vh, 50px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.board {
+    position: fixed;
+    width: calc(100% - max(300px, 25%));
+    height: calc(100% - max(10vh, 50px));
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+    overflow-y: scroll;
+}
+
+.section {
+    position: relative;
+    padding: 30px;
+    display: flex;
+    flex-direction: unset;
+    cursor: pointer;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 0.5px;
+    background-color: #ccc;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    flex-direction: unset;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.details p {
+    margin: 10px 10px;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+}
+
+.details p:first-of-type {
+    margin-left: 0;
+}
+
+.madeby {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.user-icon {
+    border-radius: 50%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btns {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.post-btn {
+    display: none;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 2000;
+    transition: all 0.2s ease;
+}
+
+.post {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1669c1;
+    color: #ffffff;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.posting {
+    position: fixed;
+    width: calc(100% - max(300px, 25%));
+    height: calc(100% - max(10vh, 50px));
+    background-color: #ffffff;
+    right: 0;
+    bottom: calc(-1 * (100% - max(10vh, 50px)));
+    overflow: auto;
+    transition: all 0.5s ease;
+}
+
+.posting div {
+    margin: 40px;
+    width: calc(100% - 80px);
+}
+
+.posting div label {
+    width: 100%;
+    font-size: 16px;
+    color: #5f6368;
+    margin-bottom: 20px;
+}
+
+.posting div label input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #dadce0;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.posting div label input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+.posting div label textarea {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #dadce0;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.posting div label textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+div.posting-btn {
+    display: flex;
+    margin: 40px;
+    width: calc(100% - 80px);
+    justify-content: center;
+    align-items: center;
+}
+
+button.posting-btn {
+    width: 150px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.posting-btn:hover {
+    background-color: #1669c1;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.sidemenu {
+    position: fixed;
+    margin-top: 0;
+    left: 0;
+    width: max(300px, 25%);
+    height: calc(100% - max(10vh, 50px));
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    background-color: #ffffff;
+    border-right: 1px solid #ccc;
+    transition: all 0.5s ease;
+}
+
+.signups {
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    z-index: 1000;
+}
+
+.signups button {
+    margin: 15px 10px;
+}
+
+.signups p {
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.sidemenu a {
+    font-size: 16px;
+    margin: 12px 40px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.sidemenu a:first-of-type {
+    margin-top: 20px;
+}
+
+::-ms-reveal {
+    display: none;
+}
+
+.arrow {
+    position: absolute;
+    margin-top: 10px;
+    right: 10px;
+    transition: all 0.5s ease;
+}
+
+.arrow.close {
+    position: absolute;
+    right: -40px;
+    transform: rotate(180deg);
+}
+
+.arrow-btn {
+    --size: 30px;
+    --bg: transparent;
+    --fg: #333;
+    --thickness: 3px;
+    --length: 11px;
+
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--bg);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.arrow-btn::before,
+.arrow-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--length);
+    height: var(--thickness);
+    background: var(--fg);
+    transform-origin: center left;
+    border-radius: 2px;
+}
+
+.arrow-btn::before {
+    transform: translate(-50%, -50%) rotate(45deg) translateX(-1.5px);
+}
+
+.arrow-btn::after {
+    transform: translate(-50%, -50%) rotate(-45deg) translateX(-1.5px);
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.icon {
+    height: calc(max(10vh, 50px) - 5px);
+    margin-left: 10px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logins {
+    position: absolute;
+    right: 10px;
+}
+
+.create-btn {
+    color: rgb(255, 52, 52);
+    background-color: white;
+    width: 170px;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 52, 52);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.1s ease;
+}
+
+.create-btn:hover {
+    background-color: rgb(253, 52, 52);
+    color: white;
+}
+
+.login-btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 52, 52);
+    width: 110px;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.1s ease;
+}
+
+.login-btn:hover {
+    background-color: rgb(253, 23, 23);
+}
+
+.message {
+    position: fixed;
+    display: none;
+    margin-top: 0;
+    height: calc(100% - max(10vh, 50px));
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    display: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #00aeff;
+    border-left-color: #ffffff;
+    animation: spinner-rotation 1s linear infinite;
+}
+
+@keyframes spinner-rotation {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .logins {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidemenu {
+        width: 100%;
+    }
+
+    .board {
+        width: 100%;
+    }
+}
+
+.forms {
+    position: fixed;
+    display: flex;
+    margin-top: 0;
+    height: calc(100% - max(10vh, 50px));
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 360px;
+}
+
+form h2 {
+    text-align: center;
+    color: #202124;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 20px;
+    color: #5f6368;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+button.form {
+    width: 100%;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.form:hover {
+    background-color: #1669c1;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+button.form:active {
+    background-color: #0f5ab6;
+}
+
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: #5f6368;
+    margin-top: 15px;
+}
+
+.password {
+    position: relative;
+}
+
+.visibility {
+    position: absolute;
+    height: 30px;
+    right: 5px;
+    bottom: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.board.messages {
+    display: none;
+}
+
+.section.title p {
+    margin: 0;
+}
+
+.section.title {
+    margin: 0;
+    padding: 15px 25px;
+}
+
+.section.message-t {
+    position: relative;
+    padding: 30px;
+    display: flex;
+    flex-direction: unset;
+}
+
+.sentby {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.message-text {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.message-text p {
+    margin: 10px 0;
+    width: 100%;
+}
+
+textarea {
+    font-family: sans-serif;
+    resize: none;
+}
+
+div.sendmsg {
+    position: fixed;
+    width: calc(100% - max(300px, 25%));
+    display: flex;
+    align-items: flex-end;
+    right: 0;
+    padding: 10px;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+textarea.sendmsg {
+    width: calc(100% - 30px);
+    margin: 30px;
+    margin-bottom: 2.5px;
+    margin-top: 2.5px;
+    flex: 1;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+    font-family: sans-serif;
+    resize: none;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.sendmsg-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #1669c1;
+    color: #ffffff;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.section.message-t {
+    cursor: unset;
+}
+
+.sendmsg-btn:hover {
+    background-color: #116bcb;
+}
+
+.sendmsg-btn i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board.messages div.section.message-t:last-of-type {
+    margin-bottom: 60px;
+}
+
+.board-close {
+    width: 100%;
+}
+
+div.sendmsg.board-close {
+    width: 100%;
+}
