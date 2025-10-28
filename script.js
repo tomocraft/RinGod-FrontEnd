@@ -431,6 +431,8 @@ try {
 
         const post = await res.json();
 
+        document.getElementById("post-btn").click();
+
         if (res.ok) {
             const boardDiv = document.getElementById("board");
             boardDiv.style.display = "none";
@@ -438,8 +440,6 @@ try {
             boardContent.style.display = "flex";
 
             showBoard(post.id, post);
-
-            document.getElementById("post-btn").click();
         } else {
             return alert("エラーが発生しました");
         }
